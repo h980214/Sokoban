@@ -1,15 +1,7 @@
 #include "stdafx.h"
 #include "Input.h"
 
-static bool s_isWKeyDown = false;
-static bool s_isAKeyDown = false;
-static bool s_isSKeyDown = false;
-static bool s_isDKeyDown = false;
 
-static bool s_isWKeyDownPrev = false;
-static bool s_isAKeyDownPrev = false;
-static bool s_isSKeyDownPrev = false;
-static bool s_isDKeyDownPrev = false;
 
 
 static bool s_currentKetStates[256] = { false };
@@ -39,6 +31,7 @@ void UpdateInput()
 		{
 			s_currentKetStates[keyCode] = false;
 		}
+		GetAsyncKeyState(keyCode);
 	}
 
 }
@@ -60,7 +53,7 @@ bool GetButtonDown(EKeyCode keyCode)
 
 bool GetButtonUp(EKeyCode keyCode)
 {
-	if (s_prevKeyStates[keyCode]&& false == s_currentKetStates[keyCode])
+	if (s_prevKeyStates[keyCode] && false == s_currentKetStates[keyCode])
 	{
 		return true;
 	}
@@ -74,7 +67,7 @@ bool GetButtonUp(EKeyCode keyCode)
 
 bool GetButton(EKeyCode keyCode)
 {
-	if (s_prevKeyStates[keyCode] && false == s_currentKetStates[keyCode])
+	if (s_prevKeyStates[keyCode] &&  s_currentKetStates[keyCode])
 	{
 		return true;
 	}

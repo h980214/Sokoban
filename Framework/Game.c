@@ -14,7 +14,7 @@ bool Initialize()
 
 void processInput()
 {
-
+	UpdateInput();
 }
 
 
@@ -48,6 +48,8 @@ void render()
 
 int32_t Run()
 {
+
+
 	// Game Loop =>  플레이어부터의 입력을 하드웨어와 분리시킨다.
 	//https://gameprogrammingpatterns.com/game-loop.html
 
@@ -65,5 +67,5 @@ int32_t Run()
 
 
 
-
+	return 0;
 }

@@ -9,7 +9,7 @@ static HANDLE s_consoleHandle;
 void clear()
 {
 	memset(s_map, ' ', sizeof(s_map));
-	for (int i = 0; i < MAP_SIZE; i++)
+	for (size_t i = 0; i < MAP_SIZE; ++i)
 	{
 		s_map[i][MAP_SIZE - 1] = '\0';
 	}
@@ -38,7 +38,7 @@ void RenderMap()
 
 	//memcpy(s_map, s_backBuffer, sizeof(s_map));
 
-	for (int i = 0; i < MAP_SIZE; ++i)
+	for (size_t i = 0; i < MAP_SIZE; ++i)
 	{
 		puts(s_map[i]);
 	}
@@ -46,7 +46,7 @@ void RenderMap()
 	clear();
 }
 
-void SetKeyMessage(int keyCode)
+void SetKeyMessage(int32_t keyCode)
 {
-	sprintf(s_map[0], "%c키가 눌림",keyCode );
+	sprintf_s(s_map[0], sizeof(s_map[0]), "%c키가 눌림",keyCode );
 }
