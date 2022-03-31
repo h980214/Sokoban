@@ -30,15 +30,15 @@ bool InitializeRenderer()
 
 void RenderMap()
 {
-	const static COORD initialPos = { 0,0 };
-	const static CONSOLE_CURSOR_INFO info = { 100,false };
-	
-	SetConsoleCursorPosition(s_consoleHandle,initialPos);
+	const static COORD initialPos = { 0, 0 };
+	const static CONSOLE_CURSOR_INFO info = { 100, false };
+
+	SetConsoleCursorPosition(s_consoleHandle, initialPos);
 	SetConsoleCursorInfo(s_consoleHandle, &info);
 
-	//memcpy(s_map, s_backBuffer, sizeof(s_map));
-
-	for (size_t i = 0; i < MAP_SIZE; ++i)
+	// 1 : deltaTime = x : 1
+	// x = 1 / deltaTime
+	for (int i = 0; i < MAP_SIZE; i++)
 	{
 		puts(s_map[i]);
 	}
@@ -46,7 +46,7 @@ void RenderMap()
 	clear();
 }
 
-void SetKeyMessage(int32_t keyCode)
+void SetMessage(const char message[24])
 {
-	sprintf_s(s_map[0], sizeof(s_map[0]), "%c키가 눌림",keyCode );
+	strcpy_s(s_map[0], MAP_SIZE, message);
 }

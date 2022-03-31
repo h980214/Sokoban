@@ -2,13 +2,15 @@
 #include "Game.h"
 #include "Renderer.h"
 #include "Input.h"
-
+#include "Timer.h"
 bool Initialize()
 {
 	if (false == InitializeRenderer())
 	{
 		return false;
 	}
+
+	
 	return true;
 }
 
@@ -20,24 +22,28 @@ void processInput()
 
 void update()
 {
-	if (GetButton(KEYCODE_W))
+	static float printTime;
+	
+	while (1)
 	{
-		SetKeyMessage(KEYCODE_W);
-	}
-	else if (GetButton(KEYCODE_D))
-	{
-		SetKeyMessage(KEYCODE_D);
-	}
-	else if (GetButton(KEYCODE_S))
-	{
-		SetKeyMessage(KEYCODE_S);
-	}
-	else if (GetButton(KEYCODE_A))
-	{
-		SetKeyMessage(KEYCODE_A);
-	}
+		printTime += GetDeltaTime();
+
+		if (printTime >= 2.0f)
+		{
+			printTime = 0.0f;
+
+		}
 
 
+		{
+
+		}
+
+
+	}
+
+	
+	// 2초 간격으로 특정 메시지 깜빡이기
 }
 
 void render()
@@ -57,6 +63,8 @@ int32_t Run()
 
 	while (true)
 	{
+		//프레임 시작 ---- 다음 프레임 시작
+		// 
 		//입력처리
 		processInput();
 			//업데이트
