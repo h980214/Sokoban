@@ -22,25 +22,25 @@ void processInput()
 
 void update()
 {
-	static float printTime;
+	static float printTime = 0.0f;
+	static bool showTime = false;
 	
-	while (1)
-	{
 		printTime += GetDeltaTime();
 
 		if (printTime >= 2.0f)
 		{
 			printTime = 0.0f;
+			showTime = !showTime;
 
 		}
 
 
+		if(showTime)
 		{
-
+			SetMessage("xxxx");
 		}
 
 
-	}
 
 	
 	// 2초 간격으로 특정 메시지 깜빡이기
