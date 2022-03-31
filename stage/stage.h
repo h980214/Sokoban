@@ -1,9 +1,5 @@
 #pragma once
 
-///역활
-/// 1. 스테이지 호출
-/// 2. 현재상황보관
-/// 3. 클리어여부
 
 typedef enum MapType
 {
@@ -11,16 +7,28 @@ typedef enum MapType
 	MAPTYPE_PLAYER = 'P',
 	MAPTYPE_BOX = 'a',
 	MAPTYPE_GOAL = 'O',
-	MAPTYPE_BOX_ON_GAOL = '@',
-	MAPTYPE_PATH = ' ',
-
+	MAPTYPE_BOX_ON_GOAL = '@',
+	MAPTYPE_PATH = ' '
 } EMapType;
 
 typedef enum StageLevel
 {
 	STAGE_01 = 1,
-    STAGE_MAX,
+	STAGE_MAX
 } EStageLevel;
 
-///스테이지를 로딩
+///<summary>
+/// 스테이지를 로딩한다.
+///</summary>
 void LoadStage(EStageLevel level);
+
+/// <summary>
+/// 스테이지를 업데이트한다.
+/// </summary>
+void UpdateStage();
+
+
+///<summary>
+/// 맵을 반환한다.
+///</summary>
+const char** GetMap();

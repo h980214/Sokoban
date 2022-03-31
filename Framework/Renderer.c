@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Renderer.h"
-
+#include"../Framework/Input.h"
 #define MAP_SIZE 24
 
 static char s_map[MAP_SIZE][MAP_SIZE]; 
@@ -36,6 +36,9 @@ void RenderMap()
 	SetConsoleCursorPosition(s_consoleHandle, initialPos);
 	SetConsoleCursorInfo(s_consoleHandle, &info);
 
+	const char** stage = GetMap();
+	memcpy(s_map, stage, sizeof(s_map));
+
 	// 1 : deltaTime = x : 1
 	// x = 1 / deltaTime
 	for (int i = 0; i < MAP_SIZE; i++)
@@ -44,9 +47,4 @@ void RenderMap()
 	}
 
 	clear();
-}
-
-void SetMessage(const char message[24])
-{
-	strcpy_s(s_map[0], MAP_SIZE, message);
 }
